@@ -30,13 +30,13 @@ const mainData = [18, 17, 15, 15, 14, 12, 10, 9, 8, 8];
 
 const drillLabels = ["Issue A", "Issue B", "Issue C"];
 
-const drillDownMap = {
+const drillDownMap : any = {
     "Cooling Towers": [5, 6, 7],
     "Housekeeping": [3, 4, 10],
     "Roof System": [8, 4, 3],
 };
 
-const drillDownPieMap = {
+const drillDownPieMap : any = {
     Adhoc: {
         labels: ["Zone 1", "Zone 2", "Zone 3"],
         data: [4, 3, 3],
@@ -84,8 +84,8 @@ const metrics = [
 
 // ---------- Component ----------
 const Dashboard = () => {
-    const [drillData, setDrillData] = useState(null);
-    const [drillPieData, setDrillPieData] = useState(null);
+    const [drillData, setDrillData] = useState<any>(null);
+    const [drillPieData, setDrillPieData] = useState<any>(null);
 
     const barData = {
         labels: drillData ? drillLabels : mainLabels,
@@ -111,10 +111,10 @@ const Dashboard = () => {
         ],
     };
 
-    const barOptions = {
+    const barOptions :any = {
         responsive: true,
         plugins: { legend: { display: false } },
-        onClick: (event, elements) => {
+        onClick: (event:any, elements:any) => {
             if (elements.length > 0) {
                 const index = elements[0].index;
                 const label = mainLabels[index];
@@ -132,7 +132,7 @@ const Dashboard = () => {
         },
     };
 
-    const pieOptions = {
+    const pieOptions: any = {
         responsive: true,
         plugins: {
             legend: {
@@ -140,7 +140,7 @@ const Dashboard = () => {
             },
             tooltip: {
                 callbacks: {
-                    label: function (context) {
+                    label: function (context:any) {
                         const label = context.label || '';
                         const value = context.parsed || 0;
                         return `${label}: ${value}`;
@@ -148,7 +148,7 @@ const Dashboard = () => {
                 },
             },
         },
-        onClick: (event, elements) => {
+        onClick: (event:any, elements:any) => {
             if (elements.length > 0) {
                 const index = elements[0].index;
                 const label = mainPieLabels[index];
